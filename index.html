@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction App</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #e6e6fa;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            width: 300px;
+            margin: auto;
+            border-radius: 15px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+        }
+
+        button {
+            background: purple;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        h1 {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Result Prediction</h1>
+
+        <p>Enter your study hours per day:</p>
+        <input type="number" id="hours" placeholder="Study hours">
+
+        <p>Enter your previous marks:</p>
+        <input type="number" id="marks" placeholder="Marks out of 100">
+
+        <br>
+
+        <button onclick="predict()">Predict Result</button>
+
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function predict() {
+            let hours = Number(document.getElementById("hours").value);
+            let marks = Number(document.getElementById("marks").value);
+
+            if (
+                document.getElementById("hours").value === "" ||
+                document.getElementById("marks").value === "" ||
+                hours < 0 || hours > 24 ||
+                marks < 0 || marks > 100
+            ) {
+                document.getElementById("result").innerHTML =
+                    "Please enter valid values!";
+            }
+            else if (hours >= 3 && marks >= 35) {
+                document.getElementById("result").innerHTML =
+                    "Prediction: Likely to Pass! 🎉";
+            }
+            else {
+                document.getElementById("result").innerHTML =
+                    "Prediction: More Practice Needed!";
+            }
+        }
+    </script>
+
+</body>
+</html>
